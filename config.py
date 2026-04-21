@@ -11,3 +11,6 @@ canvasBGColour = (66, 77, 79)
 # initialize mouse values
 mouseXraw, mouseYraw = 0, 0
 mouseXheaded, mouseYheaded = 0, 0
+
+# initialize robot position values
+robotPosX, robotPosY = 0 + mouseXheaded, 0 + mouseYheaded

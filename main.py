@@ -21,6 +21,10 @@ while True:
         config.mouseXheaded, config.mouseYheaded = -1, -1
 
     canvas.fill(config.canvasBGColour)
+
+    render.renderTiles(canvas)
+    render.renderBot(config.mouseXheaded + 62.5, config.mouseYheaded + 22.5, canvas)
+
     render.renderData(40, 340, f"Raw Mouse Position      {config.mouseXraw}, {config.mouseYraw}", canvas)
     render.renderData(40, 352, f"Headed Mouse Position   {config.mouseXheaded}, {config.mouseYheaded}", canvas)
 

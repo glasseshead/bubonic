@@ -13,4 +13,6 @@ mouseXraw, mouseYraw = 0, 0
 mouseXheaded, mouseYheaded = 0, 0
 
 # initialize robot position values
-robotPosX, robotPosY = 0 + mouseXheaded, 0 + mouseYheaded
+robotPosX, robotPosY, robotPosTheta = 0 + mouseXheaded, 0 + mouseYheaded, 0
+
+poseData = []

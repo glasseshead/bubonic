@@ -1,7 +1,7 @@
 import pygame
 
 # initialize fps values
-fps = 0
+fps = 60
 fpsClock = pygame.time.Clock()
 
 # initialize canvas values
@@ -10,9 +10,8 @@ canvasBGColour = (66, 77, 79)
 
 # initialize mouse values
 mouseXraw, mouseYraw = 0, 0
-mouseXheaded, mouseYheaded = 0, 0
 
 # initialize robot position values
-robotPosX, robotPosY, robotPosTheta = 0 + mouseXheaded, 0 + mouseYheaded, 0
+robotPosX, robotPosY, robotPosTheta = 0, 0, 0
 
 poseData = []

@@ -1,5 +1,7 @@
 import pygame
 
+import config
+
 def renderData(posX, posY, data, canvas) :
     font = pygame.font.Font(None, 14)
     text = font.render(data, True, 
@@ -29,3 +31,9 @@ def renderBot(robotPosX, robotPosY, robotPosTheta, canvas):
 def renderPath(poses, canvas):
     for i in range(1, len(poses)):
         pygame.draw.line(canvas, (255, 0, 0), poses[i - 1], poses[i], 2)
+
+def renderField(canvas):
+    canvas.fill(config.canvasBGColour)
+
+    renderTiles(canvas)
+    renderBot(config.robotPosX + 80, config.robotPosY + 40, config.robotPosTheta, canvas)

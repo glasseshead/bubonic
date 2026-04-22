@@ -37,3 +37,4 @@ def renderField(canvas):
 
     renderTiles(canvas)
     renderBot(config.robotPosX + 80, config.robotPosY + 40, config.robotPosTheta, canvas)
+    renderPath(config.poseData, canvas)

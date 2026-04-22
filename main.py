@@ -31,6 +31,8 @@ while True:
             if event.button == 1: 
                 config.poseData.append((config.mouseXraw, config.mouseYraw))
     
+    print(config.poseData)
+    
     render.renderField(canvas)
     telemetry.telemetry(canvas)
 

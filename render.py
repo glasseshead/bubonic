@@ -30,7 +30,11 @@ def renderBot(robotPosX, robotPosY, robotPosTheta, canvas):
 
 def renderPath(poses, canvas):
     for i in range(1, len(poses)):
-        pygame.draw.line(canvas, (255, 0, 0), poses[i - 1], poses[i], 2)
+        pygame.draw.line(canvas, (255, 0, 0), poses[i - 1][:2], poses[i][:2], 2)
+        pygame.draw.circle(canvas, (255, 0, 0), poses[i - 1][:2], 4)
+
+    if len(poses) > 0 and ((80 <= config.mouseXraw <= 320) and (40 <= config.mouseYraw <= 280)):
+        pygame.draw.line(canvas, (0, 255, 255), poses[-1][:2], (config.mouseXraw, config.mouseYraw), 2)
 
 def renderField(canvas):
     canvas.fill(config.canvasBGColour)

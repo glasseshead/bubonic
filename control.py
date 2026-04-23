@@ -16,3 +16,7 @@ def control():
 
     if keys[pygame.K_s]:
         config.robotPosTheta = 0
+
+    if keys[pygame.K_q]:
+        with open("path.cpp", "w") as file:
+            pass

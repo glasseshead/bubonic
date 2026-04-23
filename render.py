@@ -4,7 +4,7 @@ import config
 
 def renderData(posX, posY, data, canvas):
     # set up text variables
-    font = pygame.font.Font(None, 14)
+    font = pygame.font.Font(None, 20)
     text = font.render(data, True, (255, 255, 255), (0, 0, 0))
 
     # blit text to canvas
@@ -12,7 +12,7 @@ def renderData(posX, posY, data, canvas):
 
 def renderTiles(canvas):
     # render field perimeter
-    pygame.draw.rect(canvas, (200, 200, 200), (70, 30, 260, 260))
+    pygame.draw.rect(canvas, (200, 200, 200), (140, 60, 520, 520))
 
     # may not be the best way to do this but hey i need to do something
     for i in range(6):
@@ -20,17 +20,17 @@ def renderTiles(canvas):
             # checkerboard
             if ((j % 2 == 0 and i % 2 != 0) or
                 (j % 2 != 0 and i % 2 == 0)): 
-                pygame.draw.rect(canvas, (95, 95, 95), (80 + 40 * j, 40 + 40 * i, 40, 40))
+                pygame.draw.rect(canvas, (95, 95, 95), (160 + 80 * j, 80 + 80 * i, 80, 80))
             else:  
-                pygame.draw.rect(canvas, (100, 100, 100), (80 + 40 * j, 40 + 40 * i, 40, 40))
+                pygame.draw.rect(canvas, (100, 100, 100), (160 + 80 * j, 80 + 80 * i, 80, 80))
 
 def renderBot(robotPosX, robotPosY, robotPosTheta, canvas):
     # set surface for robot
-    botSurf = pygame.Surface((35, 35), pygame.SRCALPHA)
+    botSurf = pygame.Surface((70, 70), pygame.SRCALPHA)
 
     # draw robot and rotator indication
-    pygame.draw.rect(botSurf, (255, 90, 90), (0, 0, 35, 35))
-    pygame.draw.line(botSurf, (0, 0, 0), (35 // 2, 35 // 2), (35, 35 // 2), 2)
+    pygame.draw.rect(botSurf, (255, 90, 90), (0, 0, 70, 70))
+    pygame.draw.line(botSurf, (0, 0, 0), (70 // 2, 70 // 2), (70, 70 // 2), 4)
 
     # rotate transform
     rotated = pygame.transform.rotate(botSurf, -robotPosTheta)
@@ -43,15 +43,15 @@ def renderPath(poses, canvas):
     # fetch points
     for i in range(1, len(poses)):
         # draw line from previous logged point to last logged point
-        pygame.draw.line(canvas, (255, 0, 0), poses[i - 1][:2], poses[i][:2], 2)
+        pygame.draw.line(canvas, (255, 0, 0), poses[i - 1][:2], poses[i][:2], 3)
 
         # draw point for visibility
-        pygame.draw.circle(canvas, (255, 0, 0), poses[i - 1][:2], 4)
+        pygame.draw.circle(canvas, (255, 0, 0), poses[i - 1][:2], 5)
 
     # if within boundary
-    if len(poses) > 0 and ((80 <= config.mouseXraw <= 320) and (40 <= config.mouseYraw <= 280)):
+    if len(poses) > 0 and ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)):
         # draw cyan line to represent mouse pointing path
-        pygame.draw.line(canvas, (0, 255, 255), poses[-1][:2], (config.mouseXraw, config.mouseYraw), 2)
+        pygame.draw.line(canvas, (0, 255, 255), poses[-1][:2], (config.mouseXraw, config.mouseYraw), 3)
 
 def renderField(canvas):
     # background
@@ -59,7 +59,7 @@ def renderField(canvas):
 
     # render tiles, bot
     renderTiles(canvas)
-    renderBot(config.robotPosX + 80, config.robotPosY + 40, config.robotPosTheta, canvas)
+    renderBot(config.robotPosX + 160, config.robotPosY + 80, config.robotPosTheta, canvas)
 
     # render path
     renderPath(config.poseData, canvas)

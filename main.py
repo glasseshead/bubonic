@@ -5,6 +5,7 @@ import config
 import render
 import telemetry
 import control
+import relativity
 import boundary
 import cppwrite
 
@@ -18,6 +19,10 @@ config.fpsClock = pygame.time.Clock()
 canvas = pygame.display.set_mode((config.canvasX, config.canvasY))
 pygame.display.set_caption('Bubonic')
 
+# clear path.cpp to avoid appending to old data
+with open("path.cpp", "w") as file:
+    pass
+
 while True:
     # getting raw mouse values
     config.mouseXraw, config.mouseYraw = pygame.mouse.get_pos()
@@ -29,6 +34,10 @@ while True:
     boundary.bounds()
     control.control()
 
+    if len(config.poseData) >= 1:
+        relativity.relativity()
+
+    # control loop
     for event in pygame.event.get():
         # exit control
         if event.type == QUIT:
@@ -37,23 +46,25 @@ while True:
 
         # plot point control
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1 and ((80 <= config.mouseXraw <= 320) and (40 <= config.mouseYraw <= 280)): 
+            if event.button == 1 and ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)): 
                 config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
                 cppwrite.cppWrite()
 
-        # rotation controls
+        # rotation controls (90deg)
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                if pygame.key.get_mods() & pygame.KMOD_SHIFT:
-                    config.robotPosTheta -= 90
-                else:
-                    config.robotPosTheta -= 1
+            mods = pygame.key.get_mods()
 
-            if event.key == pygame.K_d:
-                if pygame.key.get_mods() & pygame.KMOD_SHIFT:
-                    config.robotPosTheta += 90
-                else:
-                    config.robotPosTheta += 1
+            if event.key == pygame.K_a and mods & pygame.KMOD_SHIFT:
+                config.turning90Deg = True
+                config.robotPosTheta -= 90
+
+            if event.key == pygame.K_d and mods & pygame.KMOD_SHIFT:
+                config.turning90Deg = True
+                config.robotPosTheta += 90
+
+        if event.type == pygame.KEYUP:
+            if event.key in (pygame.K_a, pygame.K_d):
+                config.turning90Deg = False
     
     # render field and telemetry
     render.renderField(canvas)

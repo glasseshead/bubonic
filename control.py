@@ -19,3 +19,11 @@ def control():
     if keys[pygame.K_q]:
         with open("path.cpp", "w") as file:
             pass
+    
+    # rotation for fast degrees
+    if not config.turning90Deg:
+        if keys[pygame.K_a]:
+            config.robotPosTheta -= 1
+
+        if keys[pygame.K_d]:
+            config.robotPosTheta += 1

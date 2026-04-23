@@ -2,12 +2,12 @@ import config
 
 def bounds():
     # if within a current boundary set robot position in that boundary
-    if ((80 <= config.mouseXraw <= 320) and (40 <= config.mouseYraw <= 280)):
-        config.robotPosX, config.robotPosY = config.mouseXraw - 80, config.mouseYraw - 40
+    if ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)):
+        config.robotPosX, config.robotPosY = config.mouseXraw - 160, config.mouseYraw - 80
 
     # set bounds for robot to fallback to
-    if (config.robotPosX < 18): config.robotPosX = 18
-    if (config.robotPosX > 222): config.robotPosX = 222
+    if (config.robotPosX < 36): config.robotPosX = 36
+    if (config.robotPosX > 444): config.robotPosX = 444
 
-    if (config.robotPosY < 18): config.robotPosY = 18
-    if (config.robotPosY > 222): config.robotPosY = 222
+    if (config.robotPosY < 36): config.robotPosY = 36
+    if (config.robotPosY > 444): config.robotPosY = 444

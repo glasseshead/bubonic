@@ -1,10 +1,9 @@
 import config
 
 def cppWrite():
-    # open file
+    # if pose data is empty just don't write anything
+    if not config.poseData:
+        return
+
     with open("path.cpp", "a") as file:
-        # write data
-        file.write(f"chassis.moveToPose({config.poseData[-1][0]}, {config.poseData[-1][1]}, {config.poseData[-1][2]}, 700);\n")
-        
-        # save changes
-        file.close()
+        file.write(f"chassis.moveToPose({config.relativeX}, {config.relativeY}, {config.relativeT}, 700);\n")

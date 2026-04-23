@@ -6,6 +6,7 @@ import render
 import telemetry
 import control
 import boundary
+import cppwrite
 
 pygame.init()
 
@@ -30,6 +31,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and ((80 <= config.mouseXraw <= 320) and (40 <= config.mouseYraw <= 280)): 
                 config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
+                cppwrite.cppWrite()
     
     print(config.poseData)
     

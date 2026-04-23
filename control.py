@@ -9,10 +9,16 @@ def control():
         config.poseData = []
 
     if keys[pygame.K_a]:
-        config.robotPosTheta -= 1
-        
+        if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+            config.robotPosTheta -= 90
+        else:
+            config.robotPosTheta -= 1
+
     if keys[pygame.K_d]:
-        config.robotPosTheta += 1
+        if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+            config.robotPosTheta += 90
+        else:
+            config.robotPosTheta += 1
 
     if keys[pygame.K_s]:
         config.robotPosTheta = 0

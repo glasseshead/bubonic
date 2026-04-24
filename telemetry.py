@@ -9,7 +9,7 @@ def telemetry(canvas):
 
     # render telemetry data
     render.renderData(10, 660 + 0 * 20, f"Raw Mouse Position             {config.mouseXraw}, {config.mouseYraw}", canvas)
-    render.renderData(10, 660 + 1 * 20, f"Robot Pose (Nonrelative)       {config.robotPosX}, {config.robotPosY}, {config.robotPosTheta}", canvas)
+    render.renderData(10, 660 + 1 * 20, f"Robot Pose (Relative)          {config.relativeX}, {config.relativeY}, {config.relativeT}", canvas)
     render.renderData(10, 660 + 2 * 20, f"Robot Theta Reset              {config.robotPosTheta == 0}", canvas)
     render.renderData(10, 660 + 3 * 20, f"Pose Data Reset                {config.poseData == []}             path.cpp Reset             {os.path.exists('./path.cpp') and os.path.getsize('./path.cpp') == 0}", canvas)
     render.renderData(10, 660 + 4 * 20, f"Turning 90 Deg                 {config.turning90Deg}", canvas)

@@ -1,16 +1,1 @@
 chassis.setPose(0.0, 0.0, 0.0);
-chassis.moveToPose(0, 0, 0, 700);
-chassis.moveToPose(59.4, 62.099999999999994, 0.0, 700);
-chassis.moveToPose(63.9, 24.299999999999997, 0.0, 700);
-chassis.moveToPose(84.3, 24.0, 0.0, 700);
-chassis.moveToPose(94.8, 73.5, 0.0, 700);
-chassis.moveToPose(67.2, 100.5, 0.0, 700);
-chassis.setPose(0.0, 0.0, 0.0);
-chassis.moveToPose(-0.3, 0.8999999999999999, 0.0, 700);
-chassis.moveToPose(-25.799999999999997, -42.6, 0.0, 700);
-chassis.moveToPose(-48.3, -32.4, 0.0, 700);
-chassis.moveToPose(12.899999999999999, -11.4, 0.0, 700);
-chassis.moveToPose(15.899999999999999, -6.3, 0.0, 700);
-chassis.moveToPose(44.699999999999996, -35.4, 0.0, 700);
-chassis.moveToPose(44.699999999999996, -42.0, 0.0, 700);
-chassis.moveToPose(44.699999999999996, -62.4, 0.0, 700);

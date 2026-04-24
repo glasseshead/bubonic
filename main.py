@@ -23,6 +23,10 @@ pygame.display.set_caption('Bubonic')
 with open("path.cpp", "w") as file:
     pass
 
+# reset zero point
+with open("path.cpp", "a") as file:
+    file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
+
 while True:
     # getting raw mouse values
     config.mouseXraw, config.mouseYraw = pygame.mouse.get_pos()
@@ -47,11 +51,7 @@ while True:
         # plot point control
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)): 
-                if config.robotPosTheta % 180 == 0:
-                    config.poseData.append((config.mouseYraw, config.mouseXraw, config.robotPosTheta))
-                if config.robotPosTheta % 180 != 0:
-                    config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
-
+                config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
                 cppwrite.cppWrite()
 
         # rotation controls (90deg)

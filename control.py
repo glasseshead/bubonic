@@ -19,6 +19,11 @@ def control():
     if keys[pygame.K_q]:
         with open("path.cpp", "w") as file:
             pass
+
+    # reset zero
+    if keys[pygame.K_e]:
+        with open("path.cpp", "a") as file:
+            file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
     
     # rotation for fast degrees
     if not config.turning90Deg:

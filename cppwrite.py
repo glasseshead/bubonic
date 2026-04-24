@@ -11,3 +11,10 @@ def cppWrite():
 
     with open("path.cpp", "a") as file:
         file.write(f"chassis.moveToPose({config.relativeX}, {config.relativeY}, {config.relativeT}, 700);\n")
+
+        '''
+        if config.robotPosTheta % 180 != 0:
+            file.write(f"chassis.moveToPose({config.relativeX}, {config.relativeY}, {config.relativeT}, 700);\n")
+        if config.robotPosTheta % 180 == 0:
+            file.write(f"chassis.moveToPose({config.relativeY}, {config.relativeX}, {config.relativeT}, 700);\n")
+        '''

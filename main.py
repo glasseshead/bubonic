@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, os
 from pygame.locals import *
 import config
 
@@ -47,7 +47,11 @@ while True:
         # plot point control
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)): 
-                config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
+                if config.robotPosTheta % 180 == 0:
+                    config.poseData.append((config.mouseYraw, config.mouseXraw, config.robotPosTheta))
+                if config.robotPosTheta % 180 != 0:
+                    config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
+
                 cppwrite.cppWrite()
 
         # rotation controls (90deg)
@@ -70,5 +74,6 @@ while True:
     render.renderField(canvas)
     telemetry.telemetry(canvas)
 
+    # update ticks
     pygame.display.update()
     config.fpsClock.tick(config.fps)

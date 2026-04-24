@@ -1,0 +1,11 @@
+"filename", "language", "C++", "Python", "comment", "blank", "total"
+"/home/david/DVHS Robotics/bubonic/boundary.py", "Python", 0, 8, 2, 3, 13
+"/home/david/DVHS Robotics/bubonic/config.py", "Python", 0, 12, 11, 9, 32
+"/home/david/DVHS Robotics/bubonic/control.py", "Python", 0, 19, 7, 8, 34
+"/home/david/DVHS Robotics/bubonic/cppwrite.py", "Python", 0, 14, 2, 4, 20
+"/home/david/DVHS Robotics/bubonic/main.py", "Python", 0, 47, 14, 18, 79
+"/home/david/DVHS Robotics/bubonic/path.cpp", "C++", 0, 0, 0, 1, 1
+"/home/david/DVHS Robotics/bubonic/relativity.py", "Python", 0, 12, 2, 1, 15
+"/home/david/DVHS Robotics/bubonic/render.py", "Python", 0, 33, 17, 15, 65
+"/home/david/DVHS Robotics/bubonic/telemetry.py", "Python", 0, 10, 2, 3, 15
+"Total", "-", 0, 155, 57, 62, 274

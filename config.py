@@ -30,3 +30,6 @@ relativeX, relativeY, relativeT = 0.0, 0.0, 0.0
 # this is actually supposed to be ticks per inch
 # i named it this to conform with ftc
 inPerTick = 80 / 24
+
+# reset origin toggle
+resetOrigin = True

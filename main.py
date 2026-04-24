@@ -23,7 +23,7 @@ pygame.display.set_caption('Bubonic')
 with open("path.cpp", "w") as file:
     pass
 
-# reset zero point
+# reset zero point codes
 with open("path.cpp", "a") as file:
     file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
 
@@ -66,9 +66,16 @@ while True:
                 config.turning90Deg = True
                 config.robotPosTheta += 90
 
+            if event.key == pygame.K_e:
+                with open("path.cpp", "a") as file:
+                    file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
+                config.resetOrigin = True
+
         if event.type == pygame.KEYUP:
             if event.key in (pygame.K_a, pygame.K_d):
                 config.turning90Deg = False
+            if event.key == pygame.K_e:
+                config.resetOrigin = False
     
     # render field and telemetry
     render.renderField(canvas)

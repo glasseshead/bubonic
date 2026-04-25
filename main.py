@@ -24,7 +24,7 @@ with open("path.cpp", "w") as file:
     pass
 
 # reset zero point codes
-with open("path.cpp", "a") as file:
+with open(getPath(), "a") as file:
     file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
 
 while True:
@@ -67,7 +67,7 @@ while True:
                 config.robotPosTheta += 90
 
             if event.key == pygame.K_e:
-                with open("path.cpp", "a") as file:
+                with open(getPath(), "a") as file:
                     file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
                 config.resetOrigin = True
 

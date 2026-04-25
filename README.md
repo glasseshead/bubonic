@@ -2,11 +2,26 @@
 A solo-programmed VEX V5 program made with Python for Autonomous programming using a digital plottable field.
 Made for use with Arson, Yaay! architectures and Plague? Where? by David
 
-Thanks Zachary from 5776K; Kabir from 5776A; Jerry from CMAA
+Thanks Zachary from 5776K; Kabir & Norrel from 5776A; Jerry from CMAA
 
 <img src="img/bubo_code.png" height="300">
 <img src="img/bubo_path1.png" height="300">
 <img src="img/bubo_path2.png" height="300">
+
+## Usage
+When you first install Bubonic from this link:
+
+[https://github.com/glasseshead/bubonic_install](https://github.com/glasseshead/bubonic_install)
+
+You should recieve a .zip file in either `Downloads` or your specified file location. 
+
+Go to that file location in your filesystem, and unzip the file.
+
+After unzipping the file, you can go to `bubonic_linux`, where you should be able to access the file by making sure it is set to `"Run as a program"` or any similar settings. 
+
+After doing so, you may peruse the below information to assist you in using Bubonic. Your `path.cpp` file will be in the home directory under the folder `bubonicOutput`.
+
+Have fun!
 
 ## Features
 - **Path and pose visualizer**
@@ -27,6 +42,7 @@ Thanks Zachary from 5776K; Kabir from 5776A; Jerry from CMAA
 
 - **Automated autonomous code programming**
   - Bubonic is capable of automatically writing autonomous code for PROS and LemLib
+  - Same format as Arson structures
 
 - **Rotational control**
   - Capability to rotate in 1 degree increments/decrements

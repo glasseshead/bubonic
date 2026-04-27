@@ -23,10 +23,6 @@ pygame.display.set_caption('Bubonic')
 with open("path.cpp", "w") as file:
     pass
 
-# reset zero point codes
-with open(cppwrite.getPath(), "a") as file:
-    file.write(f"chassis.setPose(0.0, 0.0, 0.0);\n")
-
 while True:
     # getting raw mouse values
     config.mouseXraw, config.mouseYraw = pygame.mouse.get_pos()
@@ -52,7 +48,29 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and ((160 <= config.mouseXraw <= 640) and (80 <= config.mouseYraw <= 560)): 
                 config.poseData.append((config.mouseXraw, config.mouseYraw, config.robotPosTheta))
-                cppwrite.cppWrite()
+                if len(config.poseData) == 1:
+                    # ZERO comment for first point
+                    absX = (config.mouseXraw - 200) / config.inPerTick
+                    absY = (config.mouseYraw - 120) / config.inPerTick
+                    absT = config.robotPosTheta
+                    with open(cppwrite.getPath(), "a") as file:
+                        file.write(f"// ZERO {absX} {absY} {absT}\n")
+
+                elif len(config.poseData) == 2:
+                    # setPose and first moveToPose
+                    relativity.relativity()
+                    with open(cppwrite.getPath(), "a") as file:
+                        file.write(f"chassis.setPose(0, 0, 0, 700);\n")
+                        # get first set of coords
+                        x1, y1, t1 = config.poseData[0]
+                        relX1 = (x1 - config.originX) / config.inPerTick
+                        relY1 = (y1 - config.originY) / config.inPerTick
+                        relT1 = t1 - config.originT
+                        file.write(f"chassis.moveToPose({relX1}, {relY1}, {relT1}, 700);\n")
+                        # Write second point
+                        file.write(f"chassis.moveToPose({config.relativeX}, {config.relativeY}, {config.relativeT}, 700);\n")
+                else:
+                    cppwrite.cppWrite()
 
         # rotation controls (90deg)
         if event.type == pygame.KEYDOWN:

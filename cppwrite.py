@@ -14,10 +14,6 @@ def getPath():
     return os.path.join(outDirectory, "path.cpp")
 
 def cppWrite():
-    # if pose data is empty just don't write anything
-    if not config.poseData:
-        return
-
     # Recalculate relative coordinates based on latest poseData
     relativity.relativity()
 
